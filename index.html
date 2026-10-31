@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alison Cane, Ph.D. candidate in Economics at the University of Toronto. 2026-27 economics job market candidate. Research in labour and urban economics.">
+  <title>Alison Cane | Economics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    const savedTheme = localStorage.getItem("theme");
+
+    const initialTheme = savedTheme ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
+
+    document.documentElement.setAttribute("data-theme", initialTheme);
+  </script>
+
+  <style>
+    :root {
+      --bg: #FBFCFF; /* background */
+      --sidebar: #C3D4E5; /* left profile panel */
+      --ink: #212741; /* text */
+      --muted: #5E5C58;
+      --rule: #5E5C58;
+      --accent: #5a6b80; /* links and decorative accents */
+      --serif: "Times New Roman", "Crimson Text", "Libre Baskerville", Georgia, "Source Serif 4", "Times New Roman", serif;
+      --sans: Arial, "Montserrat", "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+        --bg: #070512;
+        --sidebar: #212741;
+        --ink: #FBFCFF;
+        --muted: #d3cfaf;
+        --rule: #d3cfaf;
+        --accent: #C3D4E5;
+      }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-underline-offset: 0.17em; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+    section[id], #about {
+      scroll-margin-top: 7rem;
+    }
+    main section[id] > h2 {
+      position: sticky;
+      top: 3.75rem;
+      z-index: 10;
+      background: var(--bg);
+      padding-top: 0.5rem;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--rule);
+      background: var(--bg);
+    }
+    .topbar-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .topbar a { text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+    }
+
+    .theme-toggle {
+      margin-right: auto;  
+      background: transparent;
+      border: 1px solid var(--rule);
+      border-radius: 5px;
+      padding: 0.35rem 0.7rem;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover {
+      background: var(--sidebar);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .page {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: minmax(14rem, 17rem) minmax(0, 1fr);
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: start;
+    }
+
+    /* ---------- Sidebar ---------- */
+    .profile {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+      padding: 1.5rem;
+      background: var(--sidebar);
+      border-radius: 8px;
+    }
+    .profile img {
+      width: 100%;
+      max-width: 13rem;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 5px;
+      display: block;
+      margin: 0 0 1.5rem;
+    }
+    .profile h1 {
+      font-size: 1.9rem;
+      line-height: 1.2;
+      font-weight: 600;
+      margin: 0 0 0.6rem;
+    }
+    .profile .role {
+      font-family: var(--sans);
+      color: var(--muted);
+      line-height: 1.45;
+      margin: 0 0 1.3rem;
+    }
+    .profile ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 0.96rem;
+    }
+    .profile li { margin-bottom: 0.6rem; overflow-wrap: anywhere; }
+
+    .cv-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.48rem 1rem;
+      border: 1.5px solid var(--accent);
+      border-radius: 4px;
+      font-family: var(--sans);
+      font-size: 0.96rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .cv-link:hover { background: var(--accent); color: var(--bg); }
+
+    /* ---------- Main column ---------- */
+    main { min-width: 0; max-width: 55rem; }
+    .intro { margin-bottom: 2.75rem; }
+    .intro p { margin: 0 0 1rem; }
+    .market-note { font-size: inherit; }
+
+    h2 {
+      font-size: 1.44rem;
+      font-weight: 600;
+      margin: 2.75rem 0 1.1rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    h3 {
+      font-size: 1.17rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin: 0 0 0.3rem;
+    }
+    h4 {
+      font-size: 1.04rem;
+      font-weight: 600;
+      margin: 0 0 0.3rem;
+    }
+    .meta {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0.15rem 0 0.65rem;
+    }
+
+    /* Research */
+    .paper {
+      padding: 0 0 0.75rem;
+      margin: 0 0 1.5rem;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.2rem;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      margin: 0.45rem 0 0;
+    }
+    details { margin-top: 0.5rem; }
+    details summary {
+      cursor: pointer;
+      width: fit-content;
+      font-family: var(--sans);
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    details summary:hover { text-decoration: underline; }
+    .details-content { padding: 0.45rem 0 0.2rem 1.15rem; }
+    .details-content p { margin: 0.25rem 0 0.7rem; }
+    .details-content ul { margin: 0.2rem 0 0.7rem; padding-left: 1.3rem; }
+
+    /* Teaching */
+    .teaching-entry { padding-bottom: 1.15rem; }
+    .teaching-entry h3 { margin-bottom: 0.15rem; }
+    .ta-group { border-top: 1px solid var(--rule); padding-top: 0.85rem; }
+    .ta-list { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+    .ta-list li { margin-bottom: 0.65rem; }
+    .teaching-list {
+      margin-top: 0.9rem;
+    }
+    .teaching-row {
+      display: grid;
+      grid-template-columns: 6.5rem minmax(0, 1fr);
+      column-gap: 1.25rem;
+      margin-bottom: 1.1rem;
+      align-items: start;
+    }
+    .teaching-year {
+      font-family: var(--sans);
+      color: var(--muted);
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+    .teaching-info {
+      min-width: 0;
+    }
+    .teaching-title {
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .teaching-description {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.45;
+      margin-top: 0.15rem;
+    }
+    @media (max-width: 34rem) {
+      .teaching-row {
+        grid-template-columns: 5rem minmax(0, 1fr);
+        column-gap: 0.75rem;
+      }
+      .teaching-year {
+        font-size: 0.85rem;
+        white-space: normal;
+      }
+    }
+
+    /* References */
+    .refs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+      gap: 1.6rem 1.5rem;
+    }
+    @media (min-width: 74rem) {
+      .refs {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: 2rem;
+      }
+    }
+    .refs > div { min-width: 0; }
+    .refs p { margin: 0; line-height: 1.45; }
+    .refs .name { font-weight: 600; margin-bottom: 0.18rem; }
+    .refs .detail { font-family: var(--sans); font-size: 0.92rem; color: var(--muted); }
+    .refs a { overflow-wrap: anywhere; }
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Handling smaller screens */
+    @media (max-width: 54rem) {
+      .page { grid-template-columns: 1fr; gap: 2rem; padding-top: 1.5rem; }
+      .profile { position: static; }
+      .profile img { max-width: 10rem; }
+      .intro { margin-bottom: 2rem; }
+    }
+    @media (max-width: 30rem) {
+      .topbar-inner { justify-content: flex-start; gap: 0.55rem 1.1rem; }
+      .page { padding-left: 1rem; padding-right: 1rem; }
+      .profile { padding: 1.2rem; }
+      .refs { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    @media (min-width: 40rem) and (max-width: 54rem) {
+      .profile {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+      }
+      .profile-identity,
+      .profile-contact {
+        min-width: 0;
+      }
+      .profile-contact {
+        padding-top: 0.5rem;
+      }
+    }
+    @media (min-width: 54rem) {
+      .profile img {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    @media (max-width: 54rem) {
+      main section[id] > h2 {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation bar -->
+  <header class="topbar">
+    <nav class="topbar-inner" aria-label="Main navigation">
+      <button id="theme-toggle" class="theme-toggle" type="button">
+        Dark mode
+      </button>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#references">References</a>
+      <a href="files/AlisonCane_CV.pdf" target="_blank" rel="noopener">CV</a>
+    </nav>
+  </header>
+
+  <div class="page">
+
+    <!--Sidebar -->
+    <aside class="profile" aria-label="Profile and contact information">
+      <div class="profile-identity">
+        <img src="files/photo.jpg"
+            alt="Photo of Alison Cane"
+            onerror="this.style.display='none'">
+      </div>
+
+      <div class="profile-contact">
+        <h1>Alison Cane</h1>
+        <p class="role">
+          Ph.D. Candidate in Economics<br>
+          University of Toronto
+        </p>
+        <ul>
+          <li>
+            <a href="mailto:a.cane@mail.utoronto.ca">
+              a.cane@mail.utoronto.ca
+            </a>
+          </li>
+          <li>
+            Department of Economics<br>
+            150 St. George Street, Toronto
+          </li>
+        </ul>
+        <a class="cv-link"
+          href="files/AlisonCane_CV.pdf"
+          target="_blank"
+          rel="noopener">
+          View CV (PDF)
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main website -->
+    <main id="main-content">
+      <div class="intro" id="about">
+        <p>I am a PhD candidate in economics at the University of Toronto. I am an applied microeconomist studying topics in labour and urban economics.</p>
+        <p class="market-note"><strong>I am on the 2026-27 job market.</strong></p>
+        <p>My job market paper studies the effects of immigration on Canada's rental market and internal mobility. More broadly, my research focuses on regional mobility, the housing market, and higher education.</p>
+        <p>Before my doctoral studies, I earned a Master's degree in economics from the University of Toronto and a Bachelor's degree in mathematics and economics from the University of Ottawa.</p>
+      </div>
+
+      <!-- Research -->
+      <section id="research" aria-labelledby="research-heading">
+        <h2 id="research-heading">Research</h2>
+
+        <article class="paper">
+          <h3>Immigration, Internal Migration, and the Rental Market</h3>
+          <p class="meta">Job Market Paper · Draft coming soon</p>
+
+          <details>
+            <summary>Abstract</summary>
+            <div class="details-content">
+              <p>This paper investigates the effect of immigration on the housing market and how internal migration can amplify or offset these effects. I extend existing decompositions of the total effect of immigration by allowing natives' location choices to depend on immigration shocks in both their current locations and their prospective destinations. Even in the absence of a native response to immigration in other locations, the model shows that regions will still be affected by other regions' immigration shocks. Importantly, the magnitude of the response depends on the regional population size relative to the national population. I study this question empirically in the context of the Canadian rental market during a period of high immigration from 2015 to 2024. Using linked Canadian administrative data, I construct an instrument exploiting the rapid increase in international student arrivals in Canada following national-level policy changes. This work highlights the difficulty of designing place-based immigration policies in the presence of free mobility.</p>
+            </div>
+          </details>
+          <!--<p class="links"><a href="files/JMP.pdf" target="_blank" rel="noopener">Paper (PDF)</a></p>-->
+        </article>
+
+        <article class="paper">
+          <h3>Faculty Unionization and University Funding</h3>
+          <p class="meta">Working paper</p>
+          <details>
+            <summary>Abstract</summary>
+            <div class="details-content">
+              <p>This paper studies the impact of faculty unionization in Canada on the university's funding. Using an event-study framework with staggered treatment timing, I consider the effects of unionization at 21 schools between 1981 and 2017 on sponsored research funding, contributions to the endowment, and revenue collected from fees. I find no effect following faculty unionization for primarily undergraduate universities (typically smaller schools with lower levels of research activity and few graduate programs). For comprehensive universities (which offer graduate programs and have some level of research activity), I find no effect on sponsored research funding, an increase in contributions to the endowment by 2% per year after ten years, and some evidence that revenue collected from fees decreases, although pre-trends prevent the proper identification of this effect. Finally, for medical doctoral universities (the largest, most research-intensive schools) I see no effect in their sponsored research funding, a decrease in contributions to their endowment, and an increase in the revenue they collect from fees. These results highlight the importance of allowing for heterogeneity by both institution type and funding source.</p>
+            </div>
+          </details>
+        </article>
+
+        <!--- Works in progress -->
+        <article class="paper">
+          <h3>Memorial University Tuition Increase</h3>
+          <p class="meta">Work in progress</p>
+          <details>
+            <summary>Details</summary>
+            <div class="details-content">
+              <p>I study the effect of a large and unexpected tuition increase on student enrolment decisions in the context of Memorial University's 2022 lifted tuition freeze.</p>
+            </div>
+          </details>
+        </article>
+      </section>
+
+      <!-- Teaching -->
+      <section id="teaching" aria-labelledby="teaching-heading">
+        <h2 id="teaching-heading">Teaching</h2>
+        <article class="teaching-entry">
+          <h3>Course Instructor</h3>
+          <p class="meta">University of Toronto · 2024-26</p>
+          <details>
+            <summary>ECO220: Introduction to Data Analysis and Applied Econometrics</summary>
+            <div class="details-content">
+              <p class="meta">ECO220 is a second-year undergraduate course for economics and management students. It provides a comprehensive introduction to econometric methodology and data analysis, spanning four major sections: understanding data, probability, statistical inference, and regression. I taught the first term of the course, and coordinated assessments and teaching assistant duties, for each of the summers.</p>
+              <div class="teaching-list">
+              <div class="teaching-row">
+                <div class="teaching-year">Summer 2026<br>(117 students)</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    LEC0101: Co-taught with Tam Le and Samantha Grewal
+                  </div>
+                  <div class="teaching-description">
+                    <p class="links"><a href="files/syllabus_LEC0101_2026.pdf">Syllabus (PDF)</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-list">
+              <div class="teaching-row">
+                <div class="teaching-year">Summer 2026<br>(83 students)</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    LEC0201: Co-taught with Eun Ji (Lindsay) Lee and Samantha Grewal
+                  </div>
+                  <div class="teaching-description">
+                    <p class="links"><a href="files/syllabus_LEC0201_2026.pdf">Syllabus (PDF)</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-list">
+              <div class="teaching-row">
+                <div class="teaching-year">Summer 2025<br>(123 students)</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    LEC0101: Co-taught with Dina O'Brien and Benjamin Lauzon
+                  </div>
+                  <div class="teaching-description">
+                    <p class="links"><a href="files/syllabus_LEC0101_2025.pdf">Syllabus (PDF)</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-list">
+              <div class="teaching-row">
+                <div class="teaching-year">Summer 2024<br>(114 students)</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    LEC0201: Co-taught with Dina O'Brien and Benjamin Lauzon
+                  </div>
+                  <div class="teaching-description">
+                    <p class="links"><a href="files/syllabus_LEC0201_2024.pdf">Syllabus (PDF)</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <article class="teaching-entry">
+          <h3>Teaching Assistant</h3>
+          <p class="meta">University of Toronto · 2020-27</p>
+          <details>
+            <summary>Courses</summary>
+            <div class="teaching-list">
+              <div class="teaching-row">
+                <div class="teaching-year">2025-27</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    ECO220: Introduction to Data Analysis and Applied Econometrics
+                  </div>
+                  <div class="teaching-description">
+                    Head Teaching Assistant for Karen Ugarte-Bravo (2025-26) and Jiawei Lyu (2026-27)
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-row">
+                <div class="teaching-year">2025</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    ECO334: The Political Economy of Media
+                  </div>
+                  <div class="teaching-description">
+                    Tianyi Wang
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-row">
+                <div class="teaching-year">2024-25</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    ECO317: Concepts of Fairness in Economics
+                  </div>
+                  <div class="teaching-description">
+                    Alimohammad Faraji
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-row">
+                <div class="teaching-year">2022; 2025</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    ECO340: Labour Economics: The Distribution of Earnings
+                  </div>
+                  <div class="teaching-description">
+                    Eva Vivalt (2022) and Laura Turner (2025)
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-row">
+                <div class="teaching-year">2021-24</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    ECO403: Topics in Development Economics and Policy
+                  </div>
+                  <div class="teaching-description">
+                    Eva Vivalt (2021-23) and Arthur Blouin (2024)
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-row">
+                <div class="teaching-year">2021-23</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    ECO102: Principles of Macroeconomics
+                  </div>
+                  <div class="teaching-description">
+                    Nathanael Vellekoop
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-row">
+                <div class="teaching-year">2022</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    ECO358: Financial Economics I
+                  </div>
+                  <div class="teaching-description">
+                    Ata Mazaheri
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-row">
+                <div class="teaching-year">2020; 2022</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    ECO422: Special Topics in Economics: Competition Policy
+                  </div>
+                  <div class="teaching-description">
+                    Nadia Soboleva
+                  </div>
+                </div>
+              </div>
+
+              <div class="teaching-row">
+                <div class="teaching-year">2020-21</div>
+                <div class="teaching-info">
+                  <div class="teaching-title">
+                    ECO320: Economic Analysis of Law
+                  </div>
+                  <div class="teaching-description">
+                    Robert Barber
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </article>
+      </section>
+
+      <!-- References -->
+      <section id="references" aria-labelledby="refs-heading">
+        <h2 id="refs-heading">References</h2>
+        <div class="refs">
+          <div>
+            <p class="name">Michael Baker (Supervisor)</p>
+            <p class="detail">Department of Economics</p>
+            <p class="detail">University of Toronto</p>
+            <p class="detail"><a href="mailto:m.baker@utoronto.ca">m.baker@utoronto.ca</a></p>
+          </div>
+          <div>
+            <p class="name">Nathaniel Baum-Snow</p>
+            <p class="detail">Rotman School of Management</p>
+            <p class="detail">University of Toronto</p>
+            <p class="detail"><a href="mailto:nate.baum.snow@rotman.utoronto.ca">nate.baum.snow@rotman.utoronto.ca</a></p>
+          </div>
+          <div>
+            <p class="name">Fern Ramoutar</p>
+            <p class="detail">Department of Economics</p>
+            <p class="detail">University of Toronto</p>
+            <p class="detail"><a href="mailto:fern.ramoutar@utoronto.ca">fern.ramoutar@utoronto.ca</a></p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        Last updated October 31, 2026
+      </footer>
+    </main>
+  </div>
+  <script>
+    const themeToggle = document.getElementById("theme-toggle");
+
+    function updateThemeButton() {
+      const currentTheme =
+        document.documentElement.getAttribute("data-theme");
+
+      themeToggle.textContent =
+        currentTheme === "dark" ? "Light mode" : "Dark mode";
+
+      themeToggle.setAttribute(
+        "aria-label",
+        currentTheme === "dark"
+          ? "Switch to light mode"
+          : "Switch to dark mode"
+      );
+    }
+
+    themeToggle.addEventListener("click", function () {
+      const currentTheme =
+        document.documentElement.getAttribute("data-theme");
+
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+
+      updateThemeButton();
+    });
+
+    updateThemeButton();
+  </script>
+</body>
+</html>
